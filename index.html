@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Happy Birthday Muntuu🎀 ❤️</title>
+    <title>Happy Birthday Muntuu QT🎀 ❤️</title>
     <style>
         body {
             margin: 0;
@@ -14,63 +14,46 @@
         }
 
         h1 {
-            margin-top: 50px;
+            margin-top: 40px;
             font-size: 40px;
-            animation: glow 2s infinite alternate;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 10px white; }
-            to { text-shadow: 0 0 30px yellow; }
         }
 
         #slider {
-            width: 250px;
+            width: 260px;
             border-radius: 20px;
             margin-top: 20px;
-            box-shadow: 0 0 20px white;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
+            box-shadow: 0 0 25px white;
         }
 
         p {
             font-size: 20px;
-            width: 60%;
+            width: 70%;
             margin: auto;
             margin-top: 20px;
         }
 
-        .hearts {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: white;
+            color: #ff758c;
+            font-weight: bold;
+            cursor: pointer;
         }
 
-        .heart {
-            position: absolute;
-            color: white;
-            font-size: 20px;
-            animation: fall 5s linear infinite;
-        }
-
-        @keyframes fall {
-            0% { top: -10%; }
-            100% { top: 110%; }
+        button:hover {
+            background: pink;
         }
     </style>
 </head>
 
 <body>
 
-<h1>Happy Birthday Muntuu🎀 ❤️</h1>
+<h1>Happy Birthday Muntuu Madam🎀 ❤️</h1>
 
-<img id="slider" src="muntuu1.jpg" alt="Muntuu🎀 Photo">
+<img id="slider" src="muntuu1.jpg">
 
 <p>
     Dear Muntuu🎀 💖 <br><br>
@@ -78,39 +61,29 @@
     Tumhari hasi meri favourite sound hai 🎶  
     Har din tumhare saath special lagta hai…  
     Aaj ka din sirf tumhare liye hai ❤️  
-    Stay happy forever, my special Muntuu🎀 💕
 </p>
 
-<audio autoplay loop>
+<button onclick="playMusic()">🎵 Play Our Song 💖</button>
+
+<audio id="bgmusic" loop>
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<div class="hearts"></div>
-
 <script>
-    const heartsContainer = document.querySelector('.hearts');
+let images = ["muntuu1.jpg", "muntuu3.jpg"];
+let i = 0;
 
-    for (let i = 0; i < 30; i++) {
-        let heart = document.createElement('div');
-        heart.classList.add('heart');
-        heart.innerHTML = "❤️";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (3 + Math.random() * 5) + "s";
-        heart.style.fontSize = (15 + Math.random() * 30) + "px";
-        heartsContainer.appendChild(heart);
+setInterval(function(){
+    i++;
+    if(i >= images.length){
+        i = 0;
     }
+    document.getElementById("slider").src = images[i];
+}, 3000);
 
-    // Slideshow
-    let images = ["muntuu1.jpg", "muntuu3.jpg"];
-    let i = 0;
-
-    setInterval(function(){
-        i++;
-        if(i >= images.length){
-            i = 0;
-        }
-        document.getElementById("slider").src = images[i];
-    }, 3000);
+function playMusic(){
+    document.getElementById("bgmusic").play();
+}
 </script>
 
 </body>
