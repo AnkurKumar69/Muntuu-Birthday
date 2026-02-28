@@ -1,89 +1,258 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Happy Birthday Muntuu QT🎀 ❤️</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to right, #ff758c, #ff7eb3);
-            text-align: center;
-            font-family: Arial, sans-serif;
-            overflow: hidden;
-            color: white;
-        }
+<title>For Muntuu QT 🎀</title>
 
-        h1 {
-            margin-top: 40px;
-            font-size: 40px;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
-        #slider {
-            width: 260px;
-            border-radius: 20px;
-            margin-top: 20px;
-            box-shadow: 0 0 25px white;
-        }
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffdde1, #ee9ca7);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    overflow: hidden;
+}
 
-        p {
-            font-size: 20px;
-            width: 70%;
-            margin: auto;
-            margin-top: 20px;
-        }
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
 
-        button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 20px;
-            background: white;
-            color: #ff758c;
-            font-weight: bold;
-            cursor: pointer;
-        }
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 70px;
+    margin-top: 40px;
+    text-shadow: 0 0 25px white;
+}
 
-        button:hover {
-            background: pink;
-        }
-    </style>
+#slider {
+    width: 300px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 40px rgba(255,255,255,0.8);
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 28px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #ff4da6;
+    cursor: pointer;
+}
+
+#countdown {
+    font-size: 28px;
+    margin-top: 15px;
+}
+
+/* 💖 Floating Hearts */
+.heart {
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    animation: float 6s linear infinite;
+}
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* 🎉 Confetti */
+.confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    top: -10px;
+    animation: fall 4s linear forwards;
+}
+@keyframes fall {
+    to { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+/* 🎆 Fireworks */
+.firework {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    animation: explode 1s ease-out forwards;
+}
+@keyframes explode {
+    to { transform: scale(8); opacity: 0; }
+}
+
+/* 💌 Love Letter Popup */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    color: #ff4da6;
+    padding: 30px;
+    border-radius: 20px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    display: none;
+    box-shadow: 0 0 40px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+
+.popup h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 35px;
+}
+
+.popup button {
+    margin-top: 15px;
+    background: #ff4da6;
+    color: white;
+}
+
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 999;
+}
+
+</style>
 </head>
 
 <body>
 
-<h1>Happy Birthday Muntuu Madam🎀 ❤️</h1>
+<h1>Muntuu Madam🎀</h1>
+<h2>Happy Birthday Mumtuu.. ❤️</h2>
+
+<div id="countdown"></div>
 
 <img id="slider" src="muntuu1.jpg">
-
-<p>
-    Dear Muntuu🎀 💖 <br><br>
-    Tum meri life ki sabse beautiful smile ho ✨  
-    Tumhari hasi meri favourite sound hai 🎶  
-    Har din tumhare saath special lagta hai…  
-    Aaj ka din sirf tumhare liye hai ❤️  
-</p>
-
-<button onclick="playMusic()">🎵 Play Our Song 💖</button>
+<br>
+<button onclick="playMusic()">🎵 Play Our Song</button>
 
 <audio id="bgmusic" loop>
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
+<!-- 💌 Love Letter -->
+<div class="overlay" id="overlay"></div>
+<div class="popup" id="lovePopup">
+    <h2>For You 💖</h2>
+    <p>
+        Dear Muntuu 🎀,<br><br>
+        Tum meri life ka sabse beautiful part ho.  
+        Har smile tumhari mere din ko perfect bana deti hai.  
+        Aaj ka din sirf tumhare liye hai ❤️  
+        I’m always with you… forever 💕
+    </p>
+    <button onclick="closePopup()">Close ❤️</button>
+</div>
+
 <script>
-let images = ["muntuu1.jpg", "muntuu3.jpg"];
-let i = 0;
 
-setInterval(function(){
-    i++;
-    if(i >= images.length){
-        i = 0;
-    }
-    document.getElementById("slider").src = images[i];
-}, 3000);
-
+// 🎵 Music
 function playMusic(){
     document.getElementById("bgmusic").play();
 }
+
+// 📸 Slideshow
+let images = ["muntuu1.jpg", "muntuu3.jpg"];
+let i = 0;
+setInterval(function(){
+    i++;
+    if(i >= images.length){ i = 0; }
+    document.getElementById("slider").src = images[i];
+}, 3000);
+
+// 🎂 CHANGE BIRTHDAY DATE HERE
+let birthday = new Date(2005, 3, 20);
+
+let countdownInterval = setInterval(function() {
+    let now = new Date().getTime();
+    let distance = birthday - now;
+
+    if (distance <= 0) {
+        clearInterval(countdownInterval);
+        document.getElementById("countdown").innerHTML = "🎉 IT'S HER DAY ❤️";
+        startFireworks();
+        startConfetti();
+        showPopup();
+        return;
+    }
+
+    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((distance % (1000 * 60)) / (1000 * 60));
+    let seconds = Math.floor((distance % (1000)) / 1000);
+
+    document.getElementById("countdown").innerHTML =
+    days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+}, 1000);
+
+// 💖 Floating Hearts
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}
+setInterval(createHeart, 500);
+
+// 🎆 Fireworks
+function startFireworks(){
+    setInterval(() => {
+        const firework = document.createElement("div");
+        firework.classList.add("firework");
+        firework.style.left = Math.random() * 100 + "vw";
+        firework.style.top = Math.random() * 60 + "vh";
+        firework.style.background = "hsl(" + Math.random() * 360 + ",100%,60%)";
+        document.body.appendChild(firework);
+        setTimeout(() => firework.remove(), 1000);
+    }, 300);
+}
+
+// 🎉 Confetti
+function startConfetti(){
+    setInterval(() => {
+        const confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.background = "hsl(" + Math.random() * 360 + ",100%,60%)";
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 4000);
+    }, 200);
+}
+
+// 💌 Popup
+function showPopup(){
+    document.getElementById("overlay").style.display = "block";
+    document.getElementById("lovePopup").style.display = "block";
+}
+function closePopup(){
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("lovePopup").style.display = "none";
+}
+
 </script>
 
 </body>
