@@ -1,1 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Birthday Muntuu🎀 ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            text-align: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            color: white;
+        }
 
+        h1 {
+            margin-top: 50px;
+            font-size: 40px;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px white; }
+            to { text-shadow: 0 0 30px yellow; }
+        }
+
+        #slider {
+            width: 250px;
+            border-radius: 20px;
+            margin-top: 20px;
+            box-shadow: 0 0 20px white;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        p {
+            font-size: 20px;
+            width: 60%;
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            color: white;
+            font-size: 20px;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            0% { top: -10%; }
+            100% { top: 110%; }
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Happy Birthday Muntuu🎀 ❤️</h1>
+
+<img id="slider" src="muntuu1.jpg" alt="Muntuu🎀 Photo">
+
+<p>
+    Dear Muntuu🎀 💖 <br><br>
+    Tum meri life ki sabse beautiful smile ho ✨  
+    Tumhari hasi meri favourite sound hai 🎶  
+    Har din tumhare saath special lagta hai…  
+    Aaj ka din sirf tumhare liye hai ❤️  
+    Stay happy forever, my special Muntuu🎀 💕
+</p>
+
+<audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="hearts"></div>
+
+<script>
+    const heartsContainer = document.querySelector('.hearts');
+
+    for (let i = 0; i < 30; i++) {
+        let heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (3 + Math.random() * 5) + "s";
+        heart.style.fontSize = (15 + Math.random() * 30) + "px";
+        heartsContainer.appendChild(heart);
+    }
+
+    // Slideshow
+    let images = ["muntuu1.jpg", "muntuu3.jpg"];
+    let i = 0;
+
+    setInterval(function(){
+        i++;
+        if(i >= images.length){
+            i = 0;
+        }
+        document.getElementById("slider").src = images[i];
+    }, 3000);
+</script>
+
+</body>
+</html>
